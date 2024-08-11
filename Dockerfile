@@ -24,6 +24,10 @@ COPY start.sh /usr/local/bin/
 COPY openssl.cnf.add /etc/ssl
 COPY conf/squid*.conf /etc/squid/
 
+RUN sed -i -e 's/\r$//' /usr/local/bin/start.sh
+RUN sed -i -e 's/\r$//' /etc/ssl/openssl.cnf.add
+RUN sed -i -e 's/\r$//' /etc/squid/squid*.conf
+
 RUN cat /etc/ssl/openssl.cnf.add >> /etc/ssl/openssl.cnf
 
 RUN chmod +x /usr/local/bin/start.sh
