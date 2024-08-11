@@ -53,6 +53,7 @@ run() {
 	create_cert
 	clear_certs_db
 	initialize_cache
+	rm -f /var/run/squid.pid
 	exec "$SQUID" -NYCd 1 -f /etc/squid/squid.conf
 }
 
